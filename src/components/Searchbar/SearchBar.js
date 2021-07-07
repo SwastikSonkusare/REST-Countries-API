@@ -4,9 +4,9 @@ import { Dropdown } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/fontawesome-free-solid";
 
-import "./MainSection.scss";
+import './SearchBar.scss'
 
-const MainSection = () => {
+const SearchBar = () => {
   const dropdownItem = ["Africa", "America", "Asia", "Europe", "Oceania"];
 
   return (
@@ -52,4 +52,4 @@ const MainSection = () => {
   );
 };
 
-export default MainSection;
+export default SearchBar;

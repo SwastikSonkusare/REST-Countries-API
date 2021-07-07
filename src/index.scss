@@ -1,5 +1,24 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;600;800&display=swap');
 
+@import './styles/_variables.scss';
+
+
+/* :root {
+ 
+    --color-white: hsl(0, 0%, 100%); 
+
+     Light Mode
+
+    --very-dark-blue-primary: hsl(200, 15%, 8%);
+    --dark-gray: hsl(0, 0%, 52%);
+    --very-light-gray: hsl(0, 0%, 98%);
+
+    Dark Mode
+
+    --dark-blue: hsl(209, 23%, 22%);
+    --very-dark-blue-secondary:  hsl(207, 26%, 17%);
+  } */
+
 *,
 *::before,
 *::after {
@@ -11,17 +30,19 @@
 
 
 html {
-    font-size: 62.5%;     //1rem = 10px
+    font-size: 62.5%;      /* 1rem = 10px */
     min-height: 100vh;
 
     @media only screen and (min-width: 81.25em) {
-        font-size: 78.5%;    //1rem = 13.5px
-    }
-    
+        font-size: 78.5%;    /* 1rem = 13.5px */
+    }  
 }
 
 body {
     min-height: 100vh;
     box-sizing: border-box;
+
+    background-color: $very-light-gray;
+
 }
 

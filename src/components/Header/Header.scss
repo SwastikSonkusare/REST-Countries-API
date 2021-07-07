@@ -1,0 +1,13 @@
+@import '../../styles/variables';
+
+.header {
+    background-color: $color-white;
+    padding: 1.8rem 6rem;
+    position: relative;
+    z-index: 100;
+
+    &__heading {
+        color: $very-dark-blue-primary;
+        font-weight: 800;
+    }
+}

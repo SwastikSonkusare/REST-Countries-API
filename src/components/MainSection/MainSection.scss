@@ -1,0 +1,90 @@
+@import '../../styles/variables';
+
+
+.main {
+    border-top: 2px solid $very-light-gray;
+    background-color: $very-light-gray;
+
+    &__search {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 4rem 5rem;
+
+        &-icon {
+            position: absolute;
+            margin-left: 2rem;
+        }
+
+        &-container {
+            display: flex;
+            align-items: center;
+        }
+    }
+
+    &__input {
+        background-color: $color-white;
+        padding: 1rem 6rem;
+        border: none;
+        color: $very-dark-blue-secondary;
+        font-weight: 600;
+        border-radius: 4px;
+        box-shadow: 0 .1rem .5rem rgba(0, 0, 0, 0.2);
+
+
+        &::placeholder {
+            color: $dark-gray;
+            font-weight: 600;
+        }
+
+        &:focus-visible {
+            outline: none;
+        }
+    }
+
+    &__dropdown {
+        position: relative;
+        display: flex;
+        align-items: center;
+        grid-gap: 2rem;
+        background-color: $color-white;
+        padding: 1.5rem 2.6rem 1.5rem 1.5rem;
+        border: none;
+        color: $very-dark-blue-secondary;
+        font-weight: 600;
+        border-radius: 4px;
+        box-shadow: 0 .1rem .5rem rgba(0, 0, 0, 0.2);
+        cursor: pointer;
+
+
+        &::after {
+            display: inline-block;
+            margin-left: .255em;
+            vertical-align: .255em;
+            content: "";
+            border-top: .3em solid;
+            border-right: .3em solid transparent;
+            border-bottom: 0;
+            border-left: .3em solid transparent;
+        }
+
+        &-item {
+            color: $very-dark-blue-secondary;
+            padding: 1.5rem;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.3rem;
+        }
+    }
+}
+
+.dropdown-menu {
+    margin-top: .5rem;  
+    display: flex;
+    flex-direction: column;
+    background-color: $color-white;
+    padding: 1.5rem 2.6rem 1.5rem 1.5rem;
+    border-radius: 4px;
+    box-shadow: 0 .1rem .5rem rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+}

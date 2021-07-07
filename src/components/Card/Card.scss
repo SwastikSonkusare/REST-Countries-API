@@ -1,12 +1,16 @@
+@import '../../styles/variables';
+
+
 .container {
     padding: 0 5rem;
     display: grid;
     grid-gap: 5rem;
-    grid-template-columns: repeat(auto-fit, minmax(27rem, 1fr))
+    grid-template-columns: repeat(auto-fit, minmax(23rem, .5fr))
 }
 
 .card {
-
+    overflow: hidden;
+    border-radius: 4px;
 
     &__image {
         width: 100%;
@@ -14,20 +18,39 @@
         object-fit: cover;
     }
 
+
+    &__details {
+        display: flex;
+        flex-direction: column;
+        background-color: $color-white;
+        padding: 2rem 2rem 3rem 1.5rem;
+    }
+
     &__name {
-
+        margin-bottom: 2rem;
     }
 
-    &__population {
 
-    }
-
-    &__region {
-
-    }
-
+    &__population,
+    &__region,
     &__capital {
+        margin-bottom: .5rem;
+    }
 
+    
+    &__population--number,
+    &__region--number,
+    &__capital--number {
+        font-size: 1.2rem;
+    }
+
+
+    &__population--name,
+    &__region--name,
+    &__capital--name {
+        color: $very-dark-blue-primary;
+        font-size: 1.3rem;
+        font-weight: 600;
     }
 }
 

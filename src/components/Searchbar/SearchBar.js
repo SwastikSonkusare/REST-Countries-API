@@ -1,54 +1,51 @@
-import React from "react";
+import React, { useState } from "react";
 
-import { Dropdown } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/fontawesome-free-solid";
 
-import './SearchBar.scss'
+import Card from "../Card/Card";
+import DropdownMenu from "../Dropdown/Dropdown";
+
+import "./SearchBar.scss";
 
 const SearchBar = () => {
-  const dropdownItem = ["Africa", "America", "Asia", "Europe", "Oceania"];
+  const [input, setInput] = useState("");
+  const [query, setQuery] = useState("")
+
+
+  console.log(input);
+
+  const submitHandler = (e) =>{
+    e.preventDefault();
+    setQuery(input)
+  }
 
   return (
-    <main className="main">
-      <div className="main__search">
-        <div className="main__search-container">
-          <FontAwesomeIcon
-            size="lg"
-            icon={faSearch}
-            className="main__search-icon"
-          />
-          <input
-            type="text"
-            className="main__input"
-            placeholder="Search for a country..."
-          ></input>
-        </div>
+    <>
+      <main className="main">
+        <div className="main__search">
+          <form className="main__search-container" onSubmit={submitHandler}>
+            <FontAwesomeIcon
+              size="lg"
+              icon={faSearch}
+              className="main__search-icon"
+            />
+            <input
+              type="text"
+              className="main__input"
+              placeholder="Search for a country..."
+              value={input}
+              onChange={(e) => setInput(e.target.value)}
+            ></input>
 
-        <div>
-          <Dropdown>
-            <Dropdown.Toggle
-              variant="success"
-              className="main__dropdown"
-              id="dropdown-basic"
-            >
-              Filter by Region
-            </Dropdown.Toggle>
+            <button className="card__button" type="submit">Search</button>
+          </form>
 
-            <Dropdown.Menu>
-              {dropdownItem.map((item) => (
-                <Dropdown.Item
-                  className="main__dropdown-item"
-                  href="#/action-1"
-                >
-                  {item}
-                </Dropdown.Item>
-              ))}
-            </Dropdown.Menu>
-          </Dropdown>
+          <DropdownMenu />
         </div>
-      </div>
-    </main>
+      </main>
+      <Card query={query} />
+    </>
   );
 };
 

@@ -13,11 +13,12 @@ const SearchBar = () => {
   const [query, setQuery] = useState("")
 
 
-  console.log(input);
 
   const submitHandler = (e) =>{
     e.preventDefault();
     setQuery(input)
+
+    console.log(query)
   }
 
   return (

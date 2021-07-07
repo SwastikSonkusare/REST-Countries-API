@@ -12,15 +12,29 @@ const Card = ({ query }) => {
   const fetchCountries = async () => {
     const response = await fetch(`https://restcountries.eu/rest/v2/all`);
 
-    setCountries(await response.json());
+    const data = await response.json();
+
+    setCountries(data);
     console.log(countries);
   };
 
-  if (query) {
-    const response = fetch(`https://restcountries.eu/rest/v2/name/${query}`);
+  useEffect(() => {
+    if (query) {
+      const fetchSingleCountry = async () => {
+        const response = await fetch(
+          `https://restcountries.eu/rest/v2/name/${query}`
+        );
 
-    setCountry(response);
-  }
+        const data = await response.json();
+
+        setCountries(data);
+
+        console.log(countries);
+      };
+
+      fetchSingleCountry();
+    }
+  }, [query]);
 
   return (
     <div className="container">

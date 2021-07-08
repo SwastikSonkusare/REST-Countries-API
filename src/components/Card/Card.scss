@@ -1,13 +1,6 @@
 @import '../../styles/variables';
 
 
-.container {
-    padding: 0 5rem;
-    display: grid;
-    grid-gap: 5rem;
-    grid-template-columns: repeat(auto-fit, minmax(27rem, 31rem))
-}
-
 .card {
     overflow: hidden;
     border-radius: 4px;
@@ -56,4 +49,3 @@
         font-weight: 600;
     }
 }
-

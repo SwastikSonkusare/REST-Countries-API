@@ -6,7 +6,7 @@ import { Dropdown } from "react-bootstrap";
 
 
 
-import Card from "../Card/Card";
+import CountryList from "../CountryList/CountryList";
 
 import "./SearchBar.scss";
 
@@ -16,12 +16,12 @@ const SearchBar = () => {
   const [region, setRegion] = useState([]);
   const [regionLoading, setRegionLoading] = useState();
 
-  const dropdownItem = ["Africa", "America", "Asia", "Europe", "Oceania"];
+  const dropdownItem = ["Africa", "Americas", "Asia", "Europe", "Oceania"];
 
   const submitHandler = (e) => {
     e.preventDefault();
     setQuery(input);
-
+    setInput("")
   };
 
 
@@ -35,7 +35,6 @@ const SearchBar = () => {
     const data = await response.json();
     setRegionLoading(false)
     setRegion(data)
-
   }
 
 
@@ -82,7 +81,7 @@ const SearchBar = () => {
           </Dropdown>
         </div>
       </main>
-      <Card query={query} region={region} regionLoading={regionLoading} />
+      <CountryList query={query} region={region} regionLoading={regionLoading} setQuery={setQuery} />
     </>
   );
 };

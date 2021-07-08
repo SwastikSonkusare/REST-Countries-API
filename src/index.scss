@@ -3,6 +3,8 @@
 @import './styles/_variables.scss';
 
 
+
+
 /* :root {
  
     --color-white: hsl(0, 0%, 100%); 
@@ -43,6 +45,11 @@ body {
     box-sizing: border-box;
 
     background-color: $very-light-gray;
+
+
+    &.dark-theme {
+        background-color: $very-dark-blue-secondary;
+    }
 
 }
 

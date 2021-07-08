@@ -1,6 +1,9 @@
 @import '../../styles/variables';
 
 .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     background-color: $color-white;
     padding: 1.8rem 6rem;
     position: relative;
@@ -9,5 +12,31 @@
     &__heading {
         color: $very-dark-blue-primary;
         font-weight: 800;
+    }
+
+    &__right-section {
+        display: flex;
+        grid-gap: 1.5rem;
+        border: none;
+        padding: 1.3rem 3rem;
+        background-color: $color-white;
+        font-size: 1.5rem;
+        color: $very-dark-blue-primary;
+        font-weight: 600;
+        cursor: pointer;
+    }
+
+    &.dark-theme {
+        background-color: $dark-blue;
+    }
+    
+    &.dark-theme .header__heading {
+        color: white;
+
+    }
+
+    &.dark-theme .header__right-section {
+        background-color: transparent;
+        color: white;
     }
 }

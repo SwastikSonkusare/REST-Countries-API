@@ -2,24 +2,42 @@ import React, { useState } from "react";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/fontawesome-free-solid";
+import { Dropdown } from "react-bootstrap";
+
+
 
 import Card from "../Card/Card";
-import DropdownMenu from "../Dropdown/Dropdown";
 
 import "./SearchBar.scss";
 
 const SearchBar = () => {
   const [input, setInput] = useState("");
-  const [query, setQuery] = useState("")
+  const [query, setQuery] = useState("");
+  const [region, setRegion] = useState([]);
+  const [regionLoading, setRegionLoading] = useState();
 
+  const dropdownItem = ["Africa", "America", "Asia", "Europe", "Oceania"];
 
-
-  const submitHandler = (e) =>{
+  const submitHandler = (e) => {
     e.preventDefault();
-    setQuery(input)
+    setQuery(input);
 
-    console.log(query)
+  };
+
+
+  const filterHandler = async (item) => {
+    setRegionLoading(true)
+
+    const response = await fetch(
+      `https://restcountries.eu/rest/v2/region/${item}`
+    );
+
+    const data = await response.json();
+    setRegionLoading(false)
+    setRegion(data)
+
   }
+
 
   return (
     <>
@@ -39,13 +57,32 @@ const SearchBar = () => {
               onChange={(e) => setInput(e.target.value)}
             ></input>
 
-            <button className="card__button" type="submit">Search</button>
+            <button className="main__button" type="submit">
+              Search
+            </button>
           </form>
 
-          <DropdownMenu />
+          <Dropdown>
+            <Dropdown.Toggle
+              variant="success"
+              id="dropdown-basic"
+              className="main__dropdown"
+              as="div"
+            >
+              Filter by Region
+            </Dropdown.Toggle>
+
+            <Dropdown.Menu>
+              {dropdownItem.map((item) => (
+                <Dropdown.Item className="main__dropdown-item" onClick={() => filterHandler(item)}>
+                  {item}
+                </Dropdown.Item>
+              ))}
+            </Dropdown.Menu>
+          </Dropdown>
         </div>
       </main>
-      <Card query={query} />
+      <Card query={query} region={region} regionLoading={regionLoading} />
     </>
   );
 };

@@ -3,7 +3,6 @@ import React from "react";
 import { Dropdown } from "react-bootstrap";
 
 const DropdownMenu = () => {
-  const dropdownItem = ["Africa", "America", "Asia", "Europe", "Oceania"];
 
   return (
     <>
@@ -18,7 +17,7 @@ const DropdownMenu = () => {
 
         <Dropdown.Menu>
           {dropdownItem.map((item) => (
-            <Dropdown.Item className="main__dropdown-item" href="#/action-1">
+            <Dropdown.Item className="main__dropdown-item">
               {item}
             </Dropdown.Item>
           ))}

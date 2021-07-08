@@ -1,10 +1,18 @@
 import React from "react";
 
+import { useHistory, } from 'react-router-dom'
+
 import './Card.scss';
 
 const Card = ({ country }) => {
+  const history = useHistory();
+
+  const countryDetailsHandler = () =>{
+    history.push(`/countries/${country.name}`)
+  }
+
   return (
-    <div className="card">
+    <div className="card" onClick={countryDetailsHandler}>
       <img className="card__image" src={country.flag} alt={country.flag}></img>
 
       <div className="card__details">

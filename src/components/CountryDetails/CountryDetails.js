@@ -1,4 +1,3 @@
-import axios from "axios";
 import React, { useState, useEffect } from "react";
 
 import { useParams } from "react-router-dom";
@@ -6,34 +5,27 @@ import { useParams } from "react-router-dom";
 import "./CountriesDetails.scss";
 
 const CountryDetails = () => {
-  const [details, setDetails] = useState();
-  const [loading, setLoading] = useState();
+  const [details, setDetails] = useState([]);
+  const [loading, setLoading] = useState(false);
   const { name } = useParams();
 
-  console.log(name);
-
-  let result;
 
   useEffect(() => {
-    if (name) {
-      searchByName();
-    }
-  }, [name]);
+    const searchByName = async () => {
+      setLoading(true);
 
-  const searchByName = async () => {
-    setLoading(true);
+      const response = await fetch(
+        `https://restcountries.eu/rest/v2/name/${name}?fullText=true`
+      );
+      
+      const country = await response.json();
+      setDetails(country);
+      setLoading(false);
 
-    const { data } = await axios.get(
-      `https://restcountries.eu/rest/v2/name/${name}?fullText=true`
-    );
+    };
 
-    //   await setDetails(data);
-
-    console.log(data[0]);
-    await setDetails(JSON.parse(data[0]));
-    console.log(`the answer: ${details}`);
-    setLoading(false);
-  };
+    searchByName();
+  }, []);
 
   return (
     <div className="details__container">
@@ -44,12 +36,29 @@ const CountryDetails = () => {
       {loading ? (
         "Loading..."
       ) : (
-        <div className="details__main">
-          <div className="details__left-section">
-            {/* <img className="details__image">{country.flag}</img> */}
+        <>
+          <div className="details__main">
+            {details.map((c) => {
+              const { name, flag, numericCode } = c;
+
+              return (
+                <>
+                  <div className="details__left-section">
+                    <img
+                      className="details__image"
+                      src={flag}
+                      alt={flag}
+                    ></img>
+                    
+                  </div>
+                  <div className="details__right-section">
+                  <h1>{name}</h1>
+                  </div>
+                </>
+              );
+            })}
           </div>
-          <div className="details__right-section"></div>
-        </div>
+        </>
       )}
     </div>
   );

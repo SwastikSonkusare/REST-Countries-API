@@ -1,0 +1,120 @@
+@import '../../styles/variables';
+
+
+.details {
+    padding: 7rem;
+    
+    @media only screen and (max-width: 34.375em) {
+        padding: 3rem;
+    }
+
+    &__back {
+        margin-bottom: 5rem;
+        background-color: $color-white;
+        font-weight: 600;
+        border-radius: 4px;
+        box-shadow: 0 .1rem .5rem rgba(0, 0, 0, 0.2);
+        padding: 1rem 2rem;
+        border: none;
+        font-size: 1.5rem;
+        
+        
+        & a {
+            
+            color: $very-dark-blue-primary;
+            text-decoration: none;
+            list-style: none;
+        }
+
+        &  span {
+            font-weight: 800;
+            font-size: 1.7rem;
+            margin-right: 1rem;
+        }
+    }
+
+    &__main {
+        display: flex;
+        justify-content: space-between;
+        grid-gap: 5rem;
+
+        @media only screen and (max-width: 56.25em) {
+            flex-direction: column;
+            align-items: center;
+        }
+    }
+
+    
+    &__left-section {
+        max-width: 50rem;
+    }
+    
+    &__image {
+        height: 300px;
+        width: 100%;
+    }
+
+
+    &__right-section {
+        padding-top: 3rem;
+    }
+
+    &__section {
+        display: flex;
+        grid-gap: 6rem;
+        margin-top: 3rem;
+
+        @media only screen and (max-width: 56.25em) {
+            justify-content: space-between;
+        }
+    } 
+}
+
+.content {
+    display: flex;
+    align-items: center;
+    grid-gap: .5rem;
+    margin-bottom: 1rem;
+    width: max-content;
+
+
+    &__key {
+        color: $very-dark-blue-primary;
+        font-size: 1.4rem;
+        font-weight: 600;
+    }
+
+    &__value {
+        font-size: 1.2rem;
+    }
+}
+
+.borders {
+    margin-top: 4rem;
+    display: flex;
+    align-items: center;
+    grid-gap: 3rem;
+
+    & div {
+        display: flex;
+        flex-wrap: wrap;
+        grid-gap: 1rem;
+    }
+
+
+
+    &__value {
+        background-color: $color-white;
+        font-weight: 600;
+        border-radius: 4px;
+        box-shadow: 0 .1rem .2rem rgba(0, 0, 0, 0.2);
+        padding: 1rem 2rem;
+        border: none;
+        font-size: 1.2rem;
+
+        & a {
+            text-decoration: none;
+            color: inherit;
+        }
+    }
+}

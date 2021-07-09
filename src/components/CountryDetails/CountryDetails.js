@@ -24,7 +24,27 @@ const CountryDetails = () => {
     };
 
     searchByName();
-  }, []);
+  }, [name]);
+
+
+  const countryCodeHandler = async (code) => {
+    setLoading(true);
+
+    const response = await fetch(
+      `https://restcountries.eu/rest/v2/alpha/${code}`
+    );
+
+    const country = await response.json();
+
+    let finalResult = [];
+    finalResult.push(country)
+
+    setDetails(finalResult);
+    setLoading(false);
+
+  };
+
+
 
   return (
     <div className="details">
@@ -57,7 +77,6 @@ const CountryDetails = () => {
               const lang = [];
               languages.map((item) => lang.push(item.name));
 
-              console.log(lang);
 
               const array1 = [
                 {
@@ -136,7 +155,7 @@ const CountryDetails = () => {
                         {borders.map((border) => (
                           <>
                             <button className="borders__value">
-                              <Link>{border}</Link>
+                              <a onClick={() =>countryCodeHandler(border)}>{border}</a>
                             </button>
                           </>
                         ))}

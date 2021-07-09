@@ -5,7 +5,12 @@
     padding: 0 5rem;
     display: grid;
     grid-gap: 5rem;
-    grid-template-columns: repeat(auto-fit, minmax(27rem, 31rem))
+    grid-template-columns: repeat(auto-fit, minmax(18rem, 22.4rem));
+    
+    @media only screen and (max-width: 31.25em) {
+        padding: 0 3rem;
+        grid-template-columns: repeat(auto-fit, minmax(22rem, 30rem));
+    }
 }
 
 

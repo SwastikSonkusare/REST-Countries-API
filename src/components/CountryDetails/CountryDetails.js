@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 
 import { useParams, Link } from "react-router-dom";
+import Loader from "../Loader/Loader";
 
 import "./CountriesDetails.scss";
 
@@ -34,7 +35,7 @@ const CountryDetails = () => {
       </button>
 
       {loading ? (
-        "Loading..."
+        <Loader />
       ) : (
         <>
           <div className="details__main">

@@ -1,14 +1,22 @@
 import React from "react";
-import { Spinner } from "react-bootstrap";
 
-// import 'bootstrap/dist/css/bootstrap.css';
+import ClipLoader from "react-spinners/ClipLoader";
 
+import { css } from "@emotion/react";
 
-import './Loader.scss'
+import './Loader.scss';
 
 const Loader = () => {
+  const color = '#111517'
+
+  const override = css`
+  display: block;
+`;
+
   return (
-    <Spinner animation="border" size="lg" />
+    <span className="loader">
+      <ClipLoader color={color}  css={override} size={100} />
+    </span>
   );
 };
 

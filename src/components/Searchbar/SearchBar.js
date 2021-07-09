@@ -4,8 +4,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/fontawesome-free-solid";
 import { Dropdown } from "react-bootstrap";
 
-
-
 import CountryList from "../CountryList/CountryList";
 
 import "./SearchBar.scss";
@@ -21,40 +19,40 @@ const SearchBar = () => {
   const submitHandler = (e) => {
     e.preventDefault();
     setQuery(input);
-    setInput("")
+    setInput("");
   };
 
-
   const filterHandler = async (item) => {
-    setRegionLoading(true)
+    setRegionLoading(true);
 
     const response = await fetch(
       `https://restcountries.eu/rest/v2/region/${item}`
     );
 
     const data = await response.json();
-    setRegionLoading(false)
-    setRegion(data)
-  }
-
+    setRegionLoading(false);
+    setRegion(data);
+  };
 
   return (
     <>
       <main className="main">
         <div className="main__search">
-          <form className="main__search-container" onSubmit={submitHandler}>
-            <FontAwesomeIcon
-              size="lg"
-              icon={faSearch}
-              className="main__search-icon"
-            />
-            <input
-              type="text"
-              className="main__input"
-              placeholder="Search for a country..."
-              value={input}
-              onChange={(e) => setInput(e.target.value)}
-            ></input>
+          <form  onSubmit={submitHandler}>
+            <div className="main__search-container">
+              <FontAwesomeIcon
+                size="lg"
+                icon={faSearch}
+                className="main__search-icon"
+              />
+              <input
+                type="text"
+                className="main__input"
+                placeholder="Search for a country..."
+                value={input}
+                onChange={(e) => setInput(e.target.value)}
+              ></input>
+            </div>
 
             <button className="main__button" type="submit">
               Search
@@ -73,7 +71,10 @@ const SearchBar = () => {
 
             <Dropdown.Menu>
               {dropdownItem.map((item) => (
-                <Dropdown.Item className="main__dropdown-item" onClick={() => filterHandler(item)}>
+                <Dropdown.Item
+                  className="main__dropdown-item"
+                  onClick={() => filterHandler(item)}
+                >
                   {item}
                 </Dropdown.Item>
               ))}
@@ -81,7 +82,12 @@ const SearchBar = () => {
           </Dropdown>
         </div>
       </main>
-      <CountryList query={query} region={region} regionLoading={regionLoading} setQuery={setQuery} />
+      <CountryList
+        query={query}
+        region={region}
+        regionLoading={regionLoading}
+        setQuery={setQuery}
+      />
     </>
   );
 };
